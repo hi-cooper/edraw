@@ -74,12 +74,12 @@ export const saveAsJSON = async (
 ) => {
   const serialized = serializeAsJSON(elements, appState, files, "local");
   const blob = new Blob([serialized], {
-    type: MIME_TYPES.excalidraw,
+    type: MIME_TYPES.edraw,
   });
 
   const fileHandle = await fileSave(blob, {
     name: appState.name,
-    extension: "excalidraw",
+    extension: "edraw",
     description: "Excalidraw file",
     fileHandle: isImageFileHandle(appState.fileHandle)
       ? null
@@ -93,7 +93,7 @@ export const loadFromJSON = async (
   localElements: readonly ExcalidrawElement[] | null,
 ) => {
   const file = await fileOpen({
-    description: "Excalidraw files",
+    description: "EDraw files",
     // ToDo: Be over-permissive until https://bugs.webkit.org/show_bug.cgi?id=34442
     // gets resolved. Else, iOS users cannot open `.excalidraw` files.
     // extensions: ["json", "excalidraw", "png", "svg"],
@@ -142,12 +142,12 @@ export const saveLibraryAsJSON = async (libraryItems: LibraryItems) => {
   const serialized = serializeLibraryAsJSON(libraryItems);
   await fileSave(
     new Blob([serialized], {
-      type: MIME_TYPES.excalidrawlib,
+      type: MIME_TYPES.edrawlib,
     }),
     {
       name: "library",
-      extension: "excalidrawlib",
-      description: "Excalidraw library file",
+      extension: "edrawlib",
+      description: "EDraw library file",
     },
   );
 };

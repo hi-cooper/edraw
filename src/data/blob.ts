@@ -135,7 +135,7 @@ export const loadSceneOrLibraryFromBlob = async (
     const data = JSON.parse(contents);
     if (isValidExcalidrawData(data)) {
       return {
-        type: MIME_TYPES.excalidraw,
+        type: MIME_TYPES.edraw,
         data: restore(
           {
             elements: clearElementsForExport(data.elements || []),
@@ -160,7 +160,7 @@ export const loadSceneOrLibraryFromBlob = async (
       };
     } else if (isValidLibrary(data)) {
       return {
-        type: MIME_TYPES.excalidrawlib,
+        type: MIME_TYPES.edrawlib,
         data,
       };
     }
@@ -185,7 +185,7 @@ export const loadFromBlob = async (
     localElements,
     fileHandle,
   );
-  if (ret.type !== MIME_TYPES.excalidraw) {
+  if (ret.type !== MIME_TYPES.edraw) {
     throw new Error(t("alerts.couldNotLoadInvalidFile"));
   }
   return ret.data;
@@ -404,13 +404,13 @@ export const normalizeFile = async (file: File) => {
     if (file?.name?.endsWith(".excalidrawlib")) {
       file = createFile(
         await blobToArrayBuffer(file),
-        MIME_TYPES.excalidrawlib,
+        MIME_TYPES.edrawlib,
         file.name,
       );
     } else if (file?.name?.endsWith(".excalidraw")) {
       file = createFile(
         await blobToArrayBuffer(file),
-        MIME_TYPES.excalidraw,
+        MIME_TYPES.edraw,
         file.name,
       );
     } else {

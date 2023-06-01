@@ -120,11 +120,11 @@ export const IMAGE_MIME_TYPES = {
 export const MIME_TYPES = {
   json: "application/json",
   // excalidraw data
-  excalidraw: "application/vnd.excalidraw+json",
-  excalidrawlib: "application/vnd.excalidrawlib+json",
+  edraw: "application/vnd.excalidraw+json",
+  edrawlib: "application/vnd.excalidrawlib+json",
   // image-encoded excalidraw data
-  "excalidraw.svg": "image/svg+xml",
-  "excalidraw.png": "image/png",
+  "edraw.svg": "image/svg+xml",
+  "edraw.png": "image/png",
   // binary
   binary: "application/octet-stream",
   // image

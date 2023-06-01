@@ -6127,7 +6127,7 @@ class App extends React.Component<AppProps, AppState> {
       });
     }
 
-    const libraryJSON = event.dataTransfer.getData(MIME_TYPES.excalidrawlib);
+    const libraryJSON = event.dataTransfer.getData(MIME_TYPES.edrawlib);
     if (libraryJSON && typeof libraryJSON === "string") {
       try {
         const libraryItems = parseLibraryJSON(libraryJSON);
@@ -6160,7 +6160,7 @@ class App extends React.Component<AppProps, AppState> {
         this.scene.getElementsIncludingDeleted(),
         fileHandle,
       );
-      if (ret.type === MIME_TYPES.excalidraw) {
+      if (ret.type === MIME_TYPES.edraw) {
         this.setState({ isLoading: true });
         this.syncActionResult({
           ...ret.data,
@@ -6171,7 +6171,7 @@ class App extends React.Component<AppProps, AppState> {
           replaceFiles: true,
           commitToHistory: true,
         });
-      } else if (ret.type === MIME_TYPES.excalidrawlib) {
+      } else if (ret.type === MIME_TYPES.edrawlib) {
         await this.library
           .updateLibrary({
             libraryItems: file,

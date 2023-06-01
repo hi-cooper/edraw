@@ -30,7 +30,7 @@ export const encodePngMetadata = async ({
   const chunks = decodePng(new Uint8Array(await blobToArrayBuffer(blob)));
 
   const metadataChunk = tEXt.encode(
-    MIME_TYPES.excalidraw,
+    MIME_TYPES.edraw,
     JSON.stringify(
       await encode({
         text: metadata,
@@ -46,7 +46,7 @@ export const encodePngMetadata = async ({
 
 export const decodePngMetadata = async (blob: Blob) => {
   const metadata = await getTEXtChunk(blob);
-  if (metadata?.keyword === MIME_TYPES.excalidraw) {
+  if (metadata?.keyword === MIME_TYPES.edraw) {
     try {
       const encodedData = JSON.parse(metadata.text);
       if (!("encoded" in encodedData)) {
@@ -79,7 +79,7 @@ export const encodeSvgMetadata = async ({ text }: { text: string }) => {
   );
 
   let metadata = "";
-  metadata += `<!-- payload-type:${MIME_TYPES.excalidraw} -->`;
+  metadata += `<!-- payload-type:${MIME_TYPES.edraw} -->`;
   metadata += `<!-- payload-version:2 -->`;
   metadata += "<!-- payload-start -->";
   metadata += base64;
@@ -88,7 +88,7 @@ export const encodeSvgMetadata = async ({ text }: { text: string }) => {
 };
 
 export const decodeSvgMetadata = async ({ svg }: { svg: string }) => {
-  if (svg.includes(`payload-type:${MIME_TYPES.excalidraw}`)) {
+  if (svg.includes(`payload-type:${MIME_TYPES.edraw}`)) {
     const match = svg.match(
       /<!-- payload-start -->\s*(.+?)\s*<!-- payload-end -->/,
     );

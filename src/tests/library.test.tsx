@@ -22,7 +22,7 @@ const libraryJSONPromise = API.readFile(
 const mockLibraryFilePromise = new Promise<Blob>(async (resolve, reject) => {
   try {
     resolve(
-      new Blob([await libraryJSONPromise], { type: MIME_TYPES.excalidrawlib }),
+      new Blob([await libraryJSONPromise], { type: MIME_TYPES.edrawlib }),
     );
   } catch (error) {
     reject(error);
@@ -64,7 +64,7 @@ describe("library", () => {
     const libraryItems = parseLibraryJSON(await libraryJSONPromise);
     await API.drop(
       new Blob([serializeLibraryAsJSON(libraryItems)], {
-        type: MIME_TYPES.excalidrawlib,
+        type: MIME_TYPES.edrawlib,
       }),
     );
     await waitFor(() => {
@@ -106,7 +106,7 @@ describe("library", () => {
           ]),
         ],
         {
-          type: MIME_TYPES.excalidrawlib,
+          type: MIME_TYPES.edrawlib,
         },
       ),
     );
@@ -150,7 +150,7 @@ describe("library", () => {
 
     await API.drop(
       new Blob([serializeLibraryAsJSON([item1, item1])], {
-        type: MIME_TYPES.excalidrawlib,
+        type: MIME_TYPES.edrawlib,
       }),
     );
 
@@ -172,7 +172,7 @@ describe("library", () => {
     const libraryItems = parseLibraryJSON(await libraryJSONPromise);
     await API.drop(
       new Blob([serializeLibraryAsJSON(libraryItems)], {
-        type: MIME_TYPES.excalidrawlib,
+        type: MIME_TYPES.edrawlib,
       }),
     );
     await waitFor(() => {

@@ -56,7 +56,7 @@ export const exportCanvas = async (
         {
           description: "Export to SVG",
           name,
-          extension: appState.exportEmbedScene ? "excalidraw.svg" : "svg",
+          extension: appState.exportEmbedScene ? "edraw.svg" : "svg",
           fileHandle,
         },
       );

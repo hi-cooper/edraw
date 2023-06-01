@@ -128,7 +128,7 @@ export default function LibraryMenuItems({
 
   const onItemDrag = (id: LibraryItem["id"], event: React.DragEvent) => {
     event.dataTransfer.setData(
-      MIME_TYPES.excalidrawlib,
+      MIME_TYPES.edrawlib,
       serializeLibraryAsJSON(getInsertedElements(id)),
     );
   };

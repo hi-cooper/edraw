@@ -14,7 +14,7 @@ export const AppFooter = React.memo(() => {
         }}
       >
         <ExcalidrawPlusAppLink />
-        <EncryptedIcon />
+        {/* <EncryptedIcon /> */}
       </div>
     </Footer>
   );

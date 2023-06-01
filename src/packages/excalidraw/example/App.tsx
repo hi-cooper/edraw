@@ -171,9 +171,9 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
   const loadSceneOrLibrary = async () => {
     const file = await fileOpen({ description: "Excalidraw or library file" });
     const contents = await loadSceneOrLibraryFromBlob(file, null, null);
-    if (contents.type === MIME_TYPES.excalidraw) {
+    if (contents.type === MIME_TYPES.edraw) {
       excalidrawAPI?.updateScene(contents.data as any);
-    } else if (contents.type === MIME_TYPES.excalidrawlib) {
+    } else if (contents.type === MIME_TYPES.edrawlib) {
       excalidrawAPI?.updateLibrary({
         libraryItems: (contents.data as ImportedLibraryData).libraryItems!,
         openLibraryMenu: true,
@@ -504,9 +504,6 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
           isCollaborating={isCollaborating}
           onSelect={() => window.alert("You clicked on collab button")}
         />
-        <MainMenu.Group title="Excalidraw links">
-          <MainMenu.DefaultItems.Socials />
-        </MainMenu.Group>
         <MainMenu.Separator />
         <MainMenu.ItemCustom>
           <button
